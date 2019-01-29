@@ -131,8 +131,8 @@ function markRelayTypes(schema: SimplifiedIntrospectionWithIds): void {
       if (_.isEmpty(type.interfaces)) delete type.interfaces;
     }
 
-    _.each(type.fields, field => {
-      if (!/.Connection$/.test(field.type.name)) return;
+    _.each(type.fields, field => {      
+      if (!/.Connection$/.test(field.type.name) && !/.ConnectionEx$/.test(field.type.name) ) return;
 
       //FIXME: additional checks
       const relayConnetion = field.type;
